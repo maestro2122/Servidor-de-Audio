@@ -23,6 +23,46 @@ Parte 1
 Primeramente debemos instalar icecast2(streaming), ice2(enviar los contenidos) y vorbis-tools. 
 Para esto el comando a utilizar: sudo apt-get icecast2 ices2 vorbis-tools.
 
-Para verificar la versión del servicio que hemos instalado se debe digitar el siguiente comando icecast2-v
-En donde se desplegará la siguiente pantalla:
+Ahora verificaresmo la versión del servicio que hemos instalado 
+
+Pantalla 1 
+
+¿Qué son las vorbis-tools?
+Son herramientas de línea de comando para ficheros de sonido con extensión Ogg, siendo utilizados para reproducir o editar estos ficheros.
+
+Vorbis Tools contiene: 
+Oggdec: Decodificador de archivos ogg
+Oggenc: Codificador (convierte archivos .wav en ficheros Ogg Vorbis)
+ogg123: Herramienta de reproducción
+vcut: Divide ficheros en ogg
+vorbiscomment: Editor de comentarios de ogg
+
+¿Qué otros formatos, además de ogg y mp3 soporta icecast2?
+Soporta formatos como: Ogg Vorgis, MP3, Ogg Speex, OggFLAC, Ogg Theora.
+
+¿Cómo es el tipo MIME de los ficheros ogg?
+Los MIME Types es la manera estandard de enviar contenido por medio de la red.especificando los tipos de datos como son: audio, video, imagen, texto.
+Un MiME de los ficheros de ogg es: audio/ogg Que es un archivo de audio en el formato de contenedos Ogg. Vorbis es el códec de audio utilizado en este contenedor
+audio representa a cualquier tipo de archivos de audio.
+
+¿Cuál es la diferencia entre una transmisión unicast y una multicast? Averiguemos si icecast2 tiene soporte para ambas formas de transmisión.
+Unicast es el tráfico dirigido hacia un equipo de la red. 
+Una rama (frame) es enviada desde una interfaz de salida a una interfaz de destino, se la conoce como uno-a-uno.
+
+Multicast es el tráfico dirigido hacia un grupo de equipos de la red.
+Envía una interfaz de salida a un grupo específico de interfaces de destino, loo que permite ahorrar el ancho de banda.
+
+icecast2 puede transmitir mediante multicast, unicast es muy limitante.
+
+Parte 2 Configuración del servidor
+
+Para proceder con la configuración de servidor debemos modificar el usuario del administrador, la contraseña de igual forma la clave del transmisor y enviador, usuario 
+y contraseña de la administración mediante la página web. Adicioanl debemos cambiar el nombre en hostname.
+
+Parte 3 Configuración del Puerto
+
+Configurar el puerto 
+
+
+
 
