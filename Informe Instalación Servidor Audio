@@ -1,1 +1,28 @@
+Proyecto Instalación y Configuración de un servidor de audio
+
+Introducción
+
+Los servicios de audio se adaptan a nuevas necesidades de los usuarios, lo que permite que las radios de cualquier lugar sean escuchas como si 
+fueran radios locales.
+
+En este proyecto se realizará la instalación, configuración de un servidor de audio para lo cual se requiere trabajar con icecast2 y ices2.
+
+Icecast2 es un servidor de streaming que permite la creación de una estación de radio en internet. Soporta archivos Ogg y Mp3.
+Cualquier usuario a nivel mundial puede conectarse a nuestra emisora y escuchar las canciones o programas que se emitan en tiempo real.
+
+Icecast2 requiere de un cliente a quien entregará los contenidos para que funcione. Estos pueden ser los archivos de música, un micrófono conectado
+a la tarjeta de sonido, el cliente es Ices2.
+
+
+Desarrollo
+
+Para el desarrollo de este proyecto a continuación se detalla los pasos a seguir:
+
+Parte 1
+
+Primeramente debemos instalar icecast2(streaming), ice2(enviar los contenidos) y vorbis-tools. 
+Para esto el comando a utilizar: sudo apt-get icecast2 ices2 vorbis-tools.
+
+Para verificar la versión del servicio que hemos instalado se debe digitar el siguiente comando icecast2-v
+En donde se desplegará la siguiente pantalla:
 
