@@ -72,6 +72,7 @@ Usuario y contraseña de la administración mediante la página web.
 Imagen 2. Configuración en el fichero icecast2
 
 
+
 # PARTE 3 HABILITACIÓN DEL SERVICIO 
 
 1. En este paso se debe configurar el puerto en nuestro caso colocamos el puerto 8080 como se puede observar en la imagen 2
@@ -81,6 +82,7 @@ línea ENABLE=true
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen3.JPG"/>
 Imagen 3. Cambio en la última línea por ENABLE=true
+
 
 A continuación se debe arrancar el servicio mediante el comando service icecast2 start
 
@@ -95,6 +97,7 @@ El comando a utilizar es stop
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen4.JPG"/>
 Imagen 4. Verificación puerto escuchándose.
 
+
 Pero que ¿significa la opción -ntl?
 -NTL es una opción del comando NETSTAT que permite visualizar los puertos y direcciones en formato numérico 
 
@@ -102,6 +105,7 @@ Pero que ¿significa la opción -ntl?
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen5.JPG"/>
 Imagen 5. Conexión a la página de administración
+
 
 # CONFIGURACIÓN DEL EMISOR (ices2)
 
@@ -121,10 +125,12 @@ Modificamos La sección stream; input
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen6.JPG"/>
 Imagen 6. Configuración playlist.xml (stream e input)
 
+
 También debemos configurar la sección instance en donde se configura la conexión par que el ices2 se pueda conectar al servidor icecast.
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen7.JPG"/>
 Imagen 7. Configuración playlist.xml (instance)
+
 
 5. Adicionalmente se debe generar el archivo milista.txt dentro de la siguiente ruta /etc/ices2/milista.txt
 
@@ -139,15 +145,18 @@ sudo find / -iname "*.ogg" >> /etc/ices2/milista.txt
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen8.JPG"/>
 Imagen 8. Calidad en la transmisión.
 
+
 2. A continuación presentamos el contenido de nuestro fichero con las rutas de las canciones a producirse.
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen9.JPG"/>
 Imagen 9. Contenido fichero milista.txt
 
+
 3. Ahora debemos poner en funcionamiento al emisor y arrancar el servicio, esto lo realizamos con la sentencia ices2/etc/ices-playlist.xml &
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen10.JPG"/>
 Imagen 10. Puntos de montaje activos desde la página de administración
+
 
 4. En la siguiente imagen se observará la calidad con la que está enviando el codec al servidor. 
 
@@ -156,6 +165,7 @@ El modo de transmisión VBR consta desde la carga del archivo de música hasta q
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen11.JPG"/>
 Imagen 11. Calidad con la que está enviando el codec al servidor
+
 
 
 # CONEXIÓN CON CLIENTES DE STREAMING (VLC) Y ANÁLISIS DE TRÁFICO
@@ -168,6 +178,7 @@ Imagen 11. Calidad con la que está enviando el codec al servidor
 Imagen 12. Conexión VLC
 
 
+
 # PARTE 6 VLC
 
 1. Observemos en la siguiente imagen información sobre el codec, esto lo encontramos en el menú herramientas opción Información del codec
@@ -175,10 +186,12 @@ Imagen 12. Conexión VLC
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen13.JPG"/>
 Imagen 13. Codec
 
+
 2. Adicional vamos a mirar en la página de administración de icecast, en la opción Mountpoint List el VLC conectado
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen14.JPG"/>
 Imagen 14. VLC conectado
+
 
 3. Ahora vamos analizar el tráfico mediante Wireshark, como sabemos existen tres categorías UDP streaming, HTTP streaming y adaptive HTTP streaming. Mediante VLC se procede a 
 analizar los paquetes mostrando lo siguiente:
@@ -187,6 +200,7 @@ UDP = No se originaron paquetes
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen15.JPG"/>
 Imagen 15. Analizando el tráfico
+
 
 4. ¿Qué es Adaptive Bit Rade?
 También conocido como streaming de video adaptivo, permite enviar vídeo mediante el internet de una forma eficiente, mediante la calidad de la imagen de acuerdo a los recursos 
@@ -207,10 +221,12 @@ pero si VBR.
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen16.JPG"/>
 Imagen 16. Archivos codificados con VBR
 
+
 5. Un servidor icecast puede tener varios broadcast o también llamados puntos de montaje y cada uno con un contenido diferente, observar imagen 17.
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen17.JPG"/>
 Imagen 17. Dos puntos broadcast
+
 
 En la imagen 18 se puede observar in bitrate con el mismo contenido pero diferente calidad.
 
