@@ -25,8 +25,9 @@ Para esto el comando a utilizar: sudo apt-get icecast2 ices2 vorbis-tools.
 
 Ahora verificaremos la versión del servicio que hemos instalado 
 
-<img src="maestro2122/Servisor-de-Audio/img/imagen1.jpg"/>
-![](https://github.com/maestro2122/Servidor-de-Audio/img/imagen1.jpg)
+<img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen1.JPG"/>
+https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen1.JPG
+![](https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen1.JPG)
 Imagen 1. Versión del servicio instalado 
 
 2. ¿Qué son las vorbis-tools?
