@@ -84,6 +84,7 @@ línea ENABLE=true
 Imagen 3. Cambio en la última línea por ENABLE=true
 
 
+
 A continuación se debe arrancar el servicio mediante el comando service icecast2 start
 
 
