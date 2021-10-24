@@ -194,10 +194,7 @@ Imagen 13. Codec
 Imagen 14. VLC conectado
 
 
-3. Ahora vamos analizar el tráfico mediante Wireshark, como sabemos existen tres categorías UDP streaming, HTTP streaming y adaptive HTTP streaming. Mediante VLC se procede a 
-analizar los paquetes mostrando lo siguiente:
-
-UDP = No se originaron paquetes
+3. Ahora vamos analizar el tráfico mediante Wireshark
 
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen15.JPG"/>
 Imagen 15. Analizando el tráfico
