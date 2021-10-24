@@ -20,10 +20,10 @@ Para el desarrollo de este proyecto a continuación se detalla los pasos a segui
 
 # PARTE 1 INSTALACIÓN
 
-1. Primeramente debemos instalar icecast2(streaming), ice2(enviar los contenidos) y vorbis-tools. 
+1. Primeramente, debemos instalar icecast2(streaming), ice2(enviar los contenidos) y vorbis-tools. 
 Para esto el comando a utilizar: sudo apt-get icecast2 ices2 vorbis-tools.
 
-Ahora verificaresmo la versión del servicio que hemos instalado 
+Ahora verificaremos la versión del servicio que hemos instalado 
 
 ![](https://github.com/maestro2122/Servidor-de-Audio/img/imagen1.jpg)
 Imagen 1. Versión del servicio instalado 
@@ -42,16 +42,16 @@ vorbiscomment: Editor de comentarios de ogg
 Soporta formatos como: Ogg Vorgis, MP3, Ogg Speex, OggFLAC, Ogg Theora.
 
 4. ¿Cómo es el tipo MIME de los ficheros ogg?
-Los MIME Types es la manera estandard de enviar contenido por medio de la red.Especificando los tipos de datos como son: audio, video, imagen, texto.
-Un MiME de los ficheros de ogg es: audio/ogg Que es un archivo de audio en el formato de contenedos Ogg. Vorbis es el códec de audio utilizado en este contenedor
+Los MIME Types es la manera estándar de enviar contenido por medio de la red. Especificando los tipos de datos como son: audio, video, imagen, texto.
+Un MiME de los ficheros de ogg es: audio/ogg Que es un archivo de audio en el formato de contenidos Ogg. Vorbis es el códec de audio utilizado en este contenedor
 audio representa a cualquier tipo de archivos de audio.
 
-5. ¿Cuál es la diferencia entre una transmisión unicast y una multicast? Averiguemos si icecast2 tiene soporte para ambas formas de transmisión.
+5. ¿Cuál es la diferencia entre una transmisión unicast y una multicast? Averigüemos si icecast2 tiene soporte para ambas formas de transmisión.
 Unicast es el tráfico dirigido hacia un equipo de la red. 
 Una rama (frame) es enviada desde una interfaz de salida a una interfaz de destino, se la conoce como uno-a-uno.
 
 Multicast es el tráfico dirigido hacia un grupo de equipos de la red.
-Envía una interfaz de salida a un grupo específico de interfaces de destino, loo que permite ahorrar el ancho de banda.
+Envía una interfaz de salida a un grupo específico de interfaces de destino, lo que permite ahorrar el ancho de banda.
 
 icecast2 puede transmitir mediante multicast, unicast es muy limitante.
 
@@ -72,7 +72,7 @@ Imagen 2. Configuración en el fichero icecast2
 
 # PARTE 3 HABILITACIÓN DEL SERVICIO 
 
-1. En este paso se debe configurar el puerto en nuestro caso colocamso el puerto 8080 como se puede observar en la imagen 2
+1. En este paso se debe configurar el puerto en nuestro caso colocamos el puerto 8080 como se puede observar en la imagen 2
 
 2. Debemos habilitar el servicio icecast2.mxl, editar el siguiente comando sudo gedit /etc/default/icecast2 para editar el fichero icecast, en donde se debe cambiar la última 
 línea ENABLE=true
@@ -84,12 +84,12 @@ A continuación se debe arrancar el servicio mediante el comando service icecast
 
 # PARTE 4 HABILITACIÓN DEL SERVICIO
 
-1. ¿Si quisieramos parar el servicio qué comando se usaría?
+1. ¿Si quisiéramos parar el servicio qué comando se usaría?
 El comando a utilizar es stop
 
-2. Con el comando netsat-ntl verificamos si nuestro puerto está escuchandose.
+2. Con el comando netsat-ntl verificamos si nuestro puerto está escuchándose.
 
-Imagen 4. Verificación puerto escuchandose.
+Imagen 4. Verificación puerto escuchándose.
 
 Pero que ¿significa la opción -ntl?
 -NTL es una opción del comando NETSTAT que permite visualizar los puertos y direcciones en formato numérico 
@@ -100,12 +100,12 @@ Imagen 5. Conexión a la página de administración
 
 # CONFIGURACIÓN DEL EMISOR (ices2)
 
-Vamos a configurar el emisor ices2 es la fuente de audio que enviara los datos al servidor para que los retrasmita a los ucuarios conectados. Comando a utilizar 
+Vamos a configurar el emisor ices2 es la fuente de audio que enviara los datos al servidor para que los retrasmita a los usuarios conectados. Comando a utilizar 
 sudo mkdir /etc/ices2
 
 1. Copiamos la lista de música playlist.xml que fue creado anteriormente. Comando sudo cp /usr/share/doc/ices2/examples/ices-playlist.xml /etc/ices2/ 
 
-2. A continuación creamos un directorio para almacenar los log.Comando sudo mkdir /var/log/ices/
+2. A continuación creamos un directorio para almacenar los log. Comando sudo mkdir /var/log/ices/
 
 3. Crear el directorio donde se almacenará el contenido. Sentencia sudo mkdir /etc/ices2/music
 
@@ -127,12 +127,11 @@ sudo find / -iname "*.ogg" >> /etc/ices2/milista.txt
 
 # PARTE 5 TRANSMISIÓN
 
-1. En el fichero playlist.xml podemos configurar la calidad a la cual se transmitirá, este valor es importante debido a que indica la velocidad a la que el audio se reproduce, 
-es decir, que a mayor velocidad de la canción mucho mejor la calidad del sonido pero el archivo será más grande.  
+1. En el fichero playlist.xml podemos configurar la calidad a la cual se transmitirá, este valor es importante debido a que indica la velocidad a la que el audio se reproduce, es decir, que a mayor velocidad de la canción mucho mejor la calidad del sonido, pero el archivo será más grande.  
 
 Imagen 8. Calidad en la transmisión.
 
-2. A continuación presentamos el contenido de nuestro fichero conlas rutas de las canciones a producirse.
+2. A continuación presentamos el contenido de nuestro fichero con las rutas de las canciones a producirse.
 
 Imagen 9. Contenido fichero milista.txt
 
@@ -142,7 +141,7 @@ Imagen 10. Puntos de montaje activos desde la página de administración
 
 4. En la siguiente imagen se observará la calidad con la que está enviando el codec al servidor. 
 
-El modo de transmición VBR consta desde la carga del archivo de música hasta que se retransmite, la calidad se determina pro el tamaño en bits del valor nominal, en nuestro caso
+El modo de transmisión VBR consta desde la carga del archivo de música hasta que se retransmite, la calidad se determina pro el tamaño en bits del valor nominal, en nuestro caso
 64000 hace referencia a los 64Kb/s
 
 Imagen 11. Calidad con la que está enviando el codec al servidor
@@ -152,8 +151,7 @@ Imagen 11. Calidad con la que está enviando el codec al servidor
 
 1. Primero debemos descargar e instalar VLC en nuestro servidor. Sentencia a utilizar sudo apt-get install vlc
 
-2 y 3. Se debe abrir el VLC ir al menú y escojer la opción Abrir Ubicación de Red, en donde se va a colocar la dirección ip de nuestro servidor, puerto y punto de montaje, en 
-nuestro caso  http://localhost:8080/endirecto, pulsar reproducir
+2 y 3. Se debe abrir el VLC ir al menú y escoger la opción Abrir Ubicación de Red, en donde se va a colocar la dirección ip de nuestro servidor, puerto y punto de montaje, en nuestro caso  http://localhost:8080/endirecto, pulsar reproducir
 
 Imagen 12. Conexión VLC
 
@@ -168,7 +166,7 @@ Imagen 13. Codec
 
 Imagen 14. VLC conectado
 
-3. Ahora vamos analizar el tráfico mediante Wireshark, como sabemos existen tres categorias UDP streaming, HTTP streaming y adaptive HTTP streaming. Mediante VLC se procede a 
+3. Ahora vamos analizar el tráfico mediante Wireshark, como sabemos existen tres categorías UDP streaming, HTTP streaming y adaptive HTTP streaming. Mediante VLC se procede a 
 analizar los paquetes mostrando lo siguiente:
 
 UDP = No se originaron paquetes
@@ -185,15 +183,15 @@ ABR = Se esfuerza por mantener el constante tamaño del archivo
 
 La calidad resultante de los archivos codificados ABR es desconocida, mientras que el tamaño del archivo resultante de los archivos codificados VBR es desconocido.
 VBR produce una mejor relación de calidad sobre el tamaño en comparación con ABR
-VBR producirá archivos pequeños con configuración alta en coparación con ABR
+VBR producirá archivos pequeños con configuración alta en comparación con ABR
 ABR es una forma de codificar archivos de audio VBR
 
-Icecas2 usa VBR, se debe modificar manualmente la calida del audio, es decir, que no modifica el audio según las características del cliente. Icecast2 no tiene implementado ABR 
+Icecas2 usa VBR, se debe modificar manualmente la calidad del audio, es decir, que no modifica el audio según las características del cliente. Icecast2 no tiene implementado ABR 
 pero si VBR.
 
 Imagen 16. Archivos codificados con VBR
 
-5. Un servidor icecast puede tener varios broadcast o tambien llamados puntos de montaje y cada uno con un contenido diferente, observar imagen 17.
+5. Un servidor icecast puede tener varios broadcast o también llamados puntos de montaje y cada uno con un contenido diferente, observar imagen 17.
 
 Imagen 17. Dos puntos broadcast
 
