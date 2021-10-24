@@ -41,7 +41,7 @@ vorbiscomment: Editor de comentarios de ogg
 Soporta formatos como: Ogg Vorgis, MP3, Ogg Speex, OggFLAC, Ogg Theora.
 
 ¿Cómo es el tipo MIME de los ficheros ogg?
-Los MIME Types es la manera estandard de enviar contenido por medio de la red.especificando los tipos de datos como son: audio, video, imagen, texto.
+Los MIME Types es la manera estandard de enviar contenido por medio de la red.Especificando los tipos de datos como son: audio, video, imagen, texto.
 Un MiME de los ficheros de ogg es: audio/ogg Que es un archivo de audio en el formato de contenedos Ogg. Vorbis es el códec de audio utilizado en este contenedor
 audio representa a cualquier tipo de archivos de audio.
 
@@ -122,15 +122,81 @@ El archivo contendrá la lista de música que se reproducirá en la emisora, añ
 sudo find / -iname "*.ogg" >> /etc/ices2/milista.txt
 
 
-PARTE 5 
+PARTE 5 TRANSMISIÓN
 
-En el fichero playlist.xml podemos configurar la calidad a la cual se transmitirá, este valor es importante debido a que está relacionado con la cantidad de paquetes de datos 
-que son trnasmitos del punto A al punto B en un intervalo de timepo determinado.  
+1. En el fichero playlist.xml podemos configurar la calidad a la cual se transmitirá, este valor es importante debido a que indica la velocidad a la que el audio se reproduce, 
+es decir, que a mayor velocidad de la canción mucho mejor la calidad del sonido pero el archivo será más grande.  
 
-Imagen 8. 
+Imagen 8. Calidad en la transmisión.
 
- 
+2. A continuación presentamos el contenido de nuestro fichero conlas rutas de las canciones a producirse.
 
+Imagen 9. Contenido fichero milista.txt
+
+3. Ahora debemos poner en funcionamiento al emisor y arrancar el servicio, esto lo realizamos con la sentencia ices2/etc/ices-playlist.xml &
+
+Imagen 10. Puntos de montaje activos desde la página de administración
+
+4. En la siguiente imagen se observará la calidad con la que está enviando el codec al servidor. 
+
+El modo de transmición VBR consta desde la carga del archivo de música hasta que se retransmite, la calidad se determina pro el tamaño en bits del valor nominal, en nuestro caso
+64000 hace referencia a los 64Kb/s
+
+Imagen 11. Calidad con la que está enviando el codec al servidor
+
+
+CONEXIÓN CON CLIENTES DE STREAMING (VLC) Y ANÁLISIS DE TRÁFICO
+
+1. Primero debemos descargar e instalar VLC en nuestro servidor. Sentencia a utilizar sudo apt-get install vlc
+
+2 y 3. Se debe abrir el VLC ir al menú y escojer la opción Abrir Ubicación de Red, en donde se va a colocar la dirección ip de nuestro servidor, puerto y punto de montaje, en 
+nuestro caso  http://localhost:8080/endirecto, pulsar reproducir
+
+Imagen 12. Conexión VLC
+
+
+PARTE 6 VLC
+
+1. Observemos en la siguiente imagen información sobre el codec, esto lo encontramos en el menú herramientas opción Información del codec
+
+Imagen 13. Codec
+
+2. Adicional vamos a mirar en la página de administración de icecast, en la opción Mountpoint List el VLC conectado
+
+Imagen 14. VLC conectado
+
+3. Ahora vamos analizar el tráfico mediante Wireshark, como sabemos existen tres categorias UDP streaming, HTTP streaming y adaptive HTTP streaming. Mediante VLC se procede a 
+analizar los paquetes mostrando lo siguiente:
+
+UDP = No se originaron paquetes
+
+Imagen 15. Analizando el tráfico
+
+4. ¿Qué es Adaptive Bit Rade?
+También conocido como streaming de video adaptivo, permite enviar vídeo mediante el internet de una forma eficiente, mediante la calidad de la imagen de acuerdo a los recursos 
+de cada usuario. Se basando se en entregar el vídeo con la misma calidad a todos usuarios, sin tomar en cuenta su dispositivo o ancho de banda. 
+
+Entre VBR (variable bit rate) y ABR (Adaptive bir rate) existe diferencias como:
+VBR = Se esfuerza por mantener la calidad constante del archivo
+ABR = Se esfuerza por mantener el constante tamaño del archivo 
+
+La calidad resultante de los archivos codificados ABR es desconocida, mientras que el tamaño del archivo resultante de los archivos codificados VBR es desconocido.
+VBR produce una mejor relación de calidad sobre el tamaño en comparación con ABR
+VBR producirá archivos pequeños con configuración alta en coparación con ABR
+ABR es una forma de codificar archivos de audio VBR
+
+Icecas2 usa VBR, se debe modificar manualmente la calida del audio, es decir, que no modifica el audio según las características del cliente. Icecast2 no tiene implementado ABR 
+pero si VBR.
+
+Imagen 16. Archivos codificados con VBR
+
+5. Un servidor icecast puede tener varios broadcast o tambien llamados puntos de montaje y cada uno con un contenido diferente, observar imagen 17.
+
+Imagen 17. Dos puntos broadcast
+
+En la imagen 18 se puede observar in bitrate con el mismo contenido pero diferente calidad.
+
+Imagen 18. Bitrate
 
 
 
