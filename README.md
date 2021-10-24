@@ -233,3 +233,4 @@ En la imagen 18 se puede observar in bitrate con el mismo contenido pero diferen
 <img src="https://github.com/maestro2122/Servidor-de-Audio/blob/main/img/imagen18.JPG"/>
 Imagen 18. Bitrate
 
+Elaborado por: Pablo Gamboa y Jeanneth Calderón
